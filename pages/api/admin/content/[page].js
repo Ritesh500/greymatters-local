@@ -7,7 +7,7 @@ async function saveContentViaGitHub(page, data) {
   const repo = process.env.GITHUB_REPO;
 
   if (!token || !owner || !repo) {
-    throw new Error('GitHub env vars not set (GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO)');
+    throw new Error(`Missing env vars — TOKEN:${!!token} OWNER:${!!owner} REPO:${!!repo}`);
   }
 
   const filePath = `content/${page}.json`;
@@ -18,26 +18,33 @@ async function saveContentViaGitHub(page, data) {
     'Content-Type': 'application/json',
   };
 
-  // Get the current file SHA (required by GitHub API to update a file)
-  const getRes = await fetch(apiBase, { headers });
-  if (!getRes.ok) throw new Error(`GitHub GET failed: ${getRes.status}`);
-  const { sha } = await getRes.json();
-
-  // Commit the updated content
   const newContent = Buffer.from(JSON.stringify(data, null, 2), 'utf-8').toString('base64');
+
+  // Try to get the existing file SHA (needed for updates)
+  const getRes = await fetch(apiBase, { headers });
+  let sha;
+  if (getRes.ok) {
+    const fileData = await getRes.json();
+    sha = fileData.sha;
+  } else if (getRes.status !== 404) {
+    const errBody = await getRes.text();
+    throw new Error(`GitHub GET failed ${getRes.status}: ${errBody}`);
+  }
+  // If 404, sha remains undefined — GitHub will create the file
+
   const putRes = await fetch(apiBase, {
     method: 'PUT',
     headers,
     body: JSON.stringify({
       message: `Update ${page} content via admin panel`,
       content: newContent,
-      sha,
+      ...(sha ? { sha } : {}),
     }),
   });
 
   if (!putRes.ok) {
-    const err = await putRes.json();
-    throw new Error(err.message || `GitHub PUT failed: ${putRes.status}`);
+    const errBody = await putRes.text();
+    throw new Error(`GitHub PUT failed ${putRes.status}: ${errBody}`);
   }
 }
 
@@ -66,6 +73,7 @@ export default async function handler(req, res) {
       }
       return res.json({ success: true });
     } catch (err) {
+      console.error('[admin save error]', err.message);
       return res.status(500).json({ error: err.message });
     }
   }

@@ -188,7 +188,7 @@ export default function Navbar({ globalContent }) {
             {/* MOBILE TOGGLE */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 ml-auto"
+              className="lg:hidden p-2 rounded-lg hover:bg-slate-100 ml-auto text-slate-900"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -234,7 +234,7 @@ export default function Navbar({ globalContent }) {
                   <div className="px-6 pt-4 pb-2 space-y-3 border-t mt-4">
                     <button
                       onClick={handleStudentLogin}
-                      className="block w-full px-5 py-3 text-center text-sm font-semibold border-2 border-slate-900 rounded-full hover:bg-slate-900 hover:text-white transition"
+                      className="block w-full px-5 py-3 text-center text-sm text-slate-900 font-semibold border-2 border-slate-900 rounded-full hover:bg-slate-900 hover:text-white transition"
                     >
                       Student Login
                     </button>

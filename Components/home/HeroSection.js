@@ -88,7 +88,7 @@ export default function HeroSection({ content }) {
               </Link>
               <Link
                 href={createPageUrl('BookConsultation') || '/'}
-                className="px-8 py-4 border-2 border-slate-900 font-bold rounded-full hover:bg-slate-900 hover:text-white transition"
+                className="px-8 py-4 border-2 border-slate-900 text-slate-900 font-bold rounded-full hover:bg-slate-900 hover:text-white transition"
               >
                 {secondaryBtn}
               </Link>

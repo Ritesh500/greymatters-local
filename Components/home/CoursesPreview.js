@@ -57,7 +57,7 @@ export default function CoursesPreview({ content }) {
                   <div className="group bg-white rounded-3xl p-8 h-full border border-slate-100 hover:border-slate-200 hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500">
                     <div className="flex items-start justify-between mb-6">
                       <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className={`w-8 h-8 bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`} />
+                        <Icon className={`w-8 h-8 bg-gradient-to-r ${colors.gradient} bg-clip-text text-black`} />
                       </div>
                       <div className="flex items-center gap-1 text-amber-500">
                         <Star className="w-5 h-5 fill-current" />

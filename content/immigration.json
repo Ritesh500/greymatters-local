@@ -1,0 +1,95 @@
+{
+  "hero": {
+    "badge": "MOIA Authorized",
+    "heading": "Your Gateway to a",
+    "headingHighlight": "Global Future",
+    "description": "Expert immigration guidance for Canada, Australia, UK, USA, and more. 50,000+ successful visas and counting."
+  },
+  "countries": [
+    {
+      "id": "canada",
+      "name": "Canada",
+      "flag": "🇨🇦",
+      "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800",
+      "description": "World's most immigrant-friendly nation with excellent healthcare, education, and quality of life.",
+      "pathways": [
+        { "name": "Express Entry", "desc": "Fastest PR pathway for skilled workers", "duration": "6-12 months" },
+        { "name": "PNP Programs", "desc": "Provincial nomination for specific skills", "duration": "12-18 months" },
+        { "name": "Study Permit", "desc": "Study and work in Canada", "duration": "2-4 months" },
+        { "name": "Family Sponsorship", "desc": "Reunite with family in Canada", "duration": "12-24 months" }
+      ],
+      "stats": [
+        { "value": "450K+", "label": "Immigration Target 2024" },
+        { "value": "98%", "label": "Our Success Rate" },
+        { "value": "15K+", "label": "Students Sent" }
+      ]
+    },
+    {
+      "id": "australia",
+      "name": "Australia",
+      "flag": "🇦🇺",
+      "image": "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800",
+      "description": "High quality of life, excellent education system, and strong job market for skilled professionals.",
+      "pathways": [
+        { "name": "Skilled Independent", "desc": "Points-based PR visa (subclass 189)", "duration": "6-12 months" },
+        { "name": "Skilled Nominated", "desc": "State-sponsored PR (subclass 190)", "duration": "8-14 months" },
+        { "name": "Student Visa", "desc": "Study at top Australian universities", "duration": "1-2 months" },
+        { "name": "Employer Sponsored", "desc": "Work visa with employer support", "duration": "4-8 months" }
+      ],
+      "stats": [
+        { "value": "195K+", "label": "Skilled Visas/Year" },
+        { "value": "97%", "label": "Our Success Rate" },
+        { "value": "12K+", "label": "Students Sent" }
+      ]
+    },
+    {
+      "id": "uk",
+      "name": "United Kingdom",
+      "flag": "🇬🇧",
+      "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800",
+      "description": "World-class education, rich culture, and post-study work opportunities for international students.",
+      "pathways": [
+        { "name": "Skilled Worker Visa", "desc": "Work for UK employers", "duration": "3-8 weeks" },
+        { "name": "Student Visa", "desc": "Study at UK universities", "duration": "3-4 weeks" },
+        { "name": "Graduate Route", "desc": "2-year post-study work visa", "duration": "8 weeks" },
+        { "name": "Global Talent", "desc": "For exceptional talent", "duration": "5-8 weeks" }
+      ],
+      "stats": [
+        { "value": "500K+", "label": "Student Visas/Year" },
+        { "value": "96%", "label": "Our Success Rate" },
+        { "value": "20K+", "label": "Students Sent" }
+      ]
+    },
+    {
+      "id": "usa",
+      "name": "United States",
+      "flag": "🇺🇸",
+      "image": "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800",
+      "description": "Home to world's top universities and leading technology companies with diverse opportunities.",
+      "pathways": [
+        { "name": "F-1 Student Visa", "desc": "Study at US universities", "duration": "2-4 months" },
+        { "name": "H-1B Work Visa", "desc": "Work for US employers", "duration": "4-8 months" },
+        { "name": "OPT/CPT", "desc": "Practical training for students", "duration": "3-4 months" },
+        { "name": "B-1/B-2 Visitor", "desc": "Business or tourism visa", "duration": "2-4 weeks" }
+      ],
+      "stats": [
+        { "value": "1M+", "label": "International Students" },
+        { "value": "94%", "label": "Our Success Rate" },
+        { "value": "8K+", "label": "Students Sent" }
+      ]
+    }
+  ],
+  "services": [
+    { "title": "Documentation", "description": "Complete assistance with all paperwork, SOPs, and application forms" },
+    { "title": "University Selection", "description": "Expert guidance to choose the right program and institution" },
+    { "title": "Visa Processing", "description": "End-to-end visa application support with high success rate" },
+    { "title": "Pre-Departure", "description": "Accommodation, travel, and settlement assistance" }
+  ],
+  "process": [
+    { "step": "01", "title": "Free Consultation", "desc": "Understand your goals" },
+    { "step": "02", "title": "Assessment", "desc": "Evaluate eligibility" },
+    { "step": "03", "title": "Documentation", "desc": "Prepare all papers" },
+    { "step": "04", "title": "Application", "desc": "Submit & track" },
+    { "step": "05", "title": "Visa Success", "desc": "Celebrate together" }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "badge": "Since 1997",
+    "heading": "Building Global Futures",
+    "headingHighlight": "Since 1997",
+    "description": "Grey Matters has been India's most trusted name in IELTS, PTE, and immigration for over 27 years. What started as a single center in Delhi has grown into a nationwide network, now reaching students globally through Grey Matters Online."
+  },
+  "stats": [
+    { "value": 27, "suffix": "+", "label": "Years of Excellence" },
+    { "value": 500000, "suffix": "+", "label": "Students Trained" },
+    { "value": 50, "suffix": "+", "label": "Centers Nationwide" },
+    { "value": 500, "suffix": "+", "label": "Expert Trainers" }
+  ],
+  "story": {
+    "eyebrow": "Our Story",
+    "title": "From a Single Classroom to India's #1 Brand",
+    "paragraphs": [
+      "In 1997, when IELTS was still a new concept in India, Grey Matters was founded with a simple mission: to help Indian students achieve their dreams of studying and working abroad.",
+      "What began as a small coaching center in Delhi has transformed into India's largest and most trusted network for test preparation and immigration services. Our journey is marked by countless success stories—students who scored their dream bands, families who got their visas, and individuals who transformed their careers.",
+      "In 2020, we launched Grey Matters Online to bring our expert-led training to students everywhere. Today, we're proud to be the first choice for over 5 lakh students across India and beyond."
+    ]
+  },
+  "values": [
+    { "title": "Excellence", "desc": "Committed to the highest standards in education" },
+    { "title": "Student-First", "desc": "Every decision driven by student success" },
+    { "title": "Integrity", "desc": "Transparent, honest guidance always" },
+    { "title": "Global Vision", "desc": "Preparing students for worldwide opportunities" }
+  ],
+  "leadership": [
+    {
+      "name": "Dr. Rajesh Sharma",
+      "role": "Founder & Chairman",
+      "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400",
+      "bio": "30+ years in education, British Council certified"
+    },
+    {
+      "name": "Priya Menon",
+      "role": "Chief Academic Officer",
+      "image": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400",
+      "bio": "Former IELTS examiner, Cambridge certified"
+    },
+    {
+      "name": "Vikram Singh",
+      "role": "Head of Immigration",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+      "bio": "MOIA certified, 15+ years experience"
+    }
+  ],
+  "partners": ["British Council", "IDP Education", "Pearson", "Cambridge", "MOIA"]
+}

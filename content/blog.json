@@ -1,0 +1,82 @@
+{
+  "hero": {
+    "badge": "Expert Insights",
+    "heading": "Resources &",
+    "headingHighlight": "Guides",
+    "description": "Expert tips, strategies, and updates to help you succeed in your IELTS, PTE, and immigration journey."
+  },
+  "posts": [
+    {
+      "id": 1,
+      "title": "IELTS Writing Task 2: Complete Guide to Band 8+",
+      "slug": "ielts-writing-task-2-guide",
+      "category": "ielts_tips",
+      "excerpt": "Master the art of essay writing with our comprehensive guide covering structure, vocabulary, and common mistakes to avoid.",
+      "image": "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?w=800",
+      "author": "Dr. Priya Sharma",
+      "readTime": 8,
+      "date": "2024-01-15",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Canada Express Entry 2024: Complete CRS Calculator Guide",
+      "slug": "canada-express-entry-crs-2024",
+      "category": "immigration_news",
+      "excerpt": "Everything you need to know about the Comprehensive Ranking System and how to maximize your CRS score.",
+      "image": "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800",
+      "author": "Vikram Singh",
+      "readTime": 12,
+      "date": "2024-01-12",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "PTE Speaking: AI Scoring Secrets Revealed",
+      "slug": "pte-speaking-ai-scoring",
+      "category": "pte_strategies",
+      "excerpt": "Understand how the PTE AI evaluates your speaking responses and learn strategies to score 90+.",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+      "author": "Rahul Menon",
+      "readTime": 6,
+      "date": "2024-01-10",
+      "featured": false
+    },
+    {
+      "id": 4,
+      "title": "10 Common IELTS Speaking Mistakes Indians Make",
+      "slug": "ielts-speaking-mistakes-indians",
+      "category": "ielts_tips",
+      "excerpt": "Avoid these frequent errors that cost Indian students valuable band scores in the speaking module.",
+      "image": "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800",
+      "author": "Dr. Priya Sharma",
+      "readTime": 5,
+      "date": "2024-01-08",
+      "featured": false
+    },
+    {
+      "id": 5,
+      "title": "Australia Student Visa (Subclass 500): Step-by-Step Guide",
+      "slug": "australia-student-visa-500-guide",
+      "category": "study_abroad",
+      "excerpt": "Complete roadmap for Indian students applying for Australian student visa in 2024.",
+      "image": "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=800",
+      "author": "Meera Krishnan",
+      "readTime": 10,
+      "date": "2024-01-05",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "IELTS vs PTE: Which Test Should You Take in 2024?",
+      "slug": "ielts-vs-pte-2024",
+      "category": "general",
+      "excerpt": "A detailed comparison to help you choose the right English proficiency test for your goals.",
+      "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800",
+      "author": "Dr. Priya Sharma",
+      "readTime": 7,
+      "date": "2024-01-03",
+      "featured": false
+    }
+  ]
+}

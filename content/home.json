@@ -1,0 +1,239 @@
+{
+  "hero": {
+    "badge": "Trusted Since 1997 • 2.5 Lakh+ Success Stories",
+    "heading1": "Your Global Future,",
+    "heading2": "Proven Worldwide",
+    "description": "Master IELTS, PTE & Immigration with expert guidance. Live online classes, proven results, and complete visa support trusted by millions worldwide.",
+    "primaryBtn": "Start Online Prep",
+    "secondaryBtn": "Book Free Consultation",
+    "features": [
+      {
+        "label": "Live Online Classes"
+      },
+      {
+        "label": "Global Recognition"
+      },
+      {
+        "label": "Authorized Education & Immigration Institution"
+      }
+    ],
+    "stats": [
+      {
+        "value": 29,
+        "suffix": "+",
+        "label": "Years of Excellence"
+      },
+      {
+        "value": 25000,
+        "suffix": "+",
+        "label": "Students Trained"
+      },
+      {
+        "value": 50000,
+        "suffix": "+",
+        "label": "Successful Visas"
+      },
+      {
+        "value": 98,
+        "suffix": "%",
+        "label": "Success Rate"
+      }
+    ]
+  },
+  "trust": {
+    "eyebrow": "Why Grey Matters",
+    "title": "Trusted by 25 Lakh+ Students",
+    "description": "When your future is at stake, trust the brand that has been building global careers for over two decades.",
+    "points": [
+      {
+        "title": "29+ Years of Trust",
+        "description": "India's most trusted IELTS & PTE brand since 1997, with a legacy of excellence."
+      },
+      {
+        "title": "IDP Partner",
+        "description": "Official IELTS test center and IDP recognized training institution."
+      },
+      {
+        "title": "Global Network",
+        "description": "Partnerships with 500+ universities and immigration authorities worldwide."
+      },
+      {
+        "title": "Government Recognized",
+        "description": "MOIA authorized and ISO certified immigration consultancy services."
+      }
+    ],
+    "milestones": [
+      {
+        "year": "1997",
+        "event": "Founded in India as IELTS training pioneer"
+      },
+      {
+        "year": "2005",
+        "event": "Expanded to immigration consultancy services"
+      },
+      {
+        "year": "2012",
+        "event": "Launched PTE preparation programs"
+      },
+      {
+        "year": "2018",
+        "event": "Digital transformation begins"
+      },
+      {
+        "year": "2020",
+        "event": "Grey Matters Online launched"
+      },
+      {
+        "year": "2024",
+        "event": "India's #1 Online Test Prep Platform"
+      }
+    ]
+  },
+  "coursesPreview": {
+    "eyebrow": "Our Programs",
+    "title": "Choose Your Path to Success",
+    "description": "Whether it's test preparation or immigration, our expert-led programs are designed to maximize your potential.",
+    "courses": [
+      {
+        "id": "ielts",
+        "title": "IELTS Online",
+        "description": "Comprehensive preparation for Academic & General Training with expert instructors",
+        "features": [
+          "Live Classes",
+          "Mock Tests",
+          "Band 7+ Guarantee"
+        ],
+        "students": "2L+",
+        "rating": 4.9,
+        "duration": "6-8 Weeks"
+      },
+      {
+        "id": "pte",
+        "title": "PTE Academic",
+        "description": "AI-driven coaching for PTE with unlimited practice tests and instant scoring",
+        "features": [
+          "AI Practice",
+          "Score Analytics",
+          "79+ Target"
+        ],
+        "students": "80K+",
+        "rating": 4.8,
+        "duration": "4-6 Weeks"
+      },
+      {
+        "id": "spoken_english",
+        "title": "Spoken English",
+        "description": "Fluency-focused program to build confidence for global communication",
+        "features": [
+          "1-on-1 Sessions",
+          "Native Speakers",
+          "Certification"
+        ],
+        "students": "50K+",
+        "rating": 4.9,
+        "duration": "8-12 Weeks"
+      },
+      {
+        "id": "immigration",
+        "title": "Immigration Services",
+        "description": "End-to-end visa guidance for Canada, Australia, UK, New Zealand & more",
+        "features": [
+          "PR Pathways",
+          "Document Support",
+          "Interview Prep"
+        ],
+        "students": "50K+",
+        "rating": 4.9,
+        "duration": "Ongoing"
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "How It Works",
+    "title": "Your Journey to Success",
+    "description": "A simple, proven 4-step process that has helped over 5 lakh students achieve their dreams.",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Book a Free Consultation",
+        "description": "Speak with our expert counselors to understand your goals and get a personalized study plan."
+      },
+      {
+        "step": "02",
+        "title": "Enroll in Your Course",
+        "description": "Choose from IELTS, PTE, or Spoken English programs with flexible batch timings."
+      },
+      {
+        "step": "03",
+        "title": "Learn & Practice",
+        "description": "Attend live classes, access practice materials, take mock tests, and track your progress."
+      },
+      {
+        "step": "04",
+        "title": "Achieve Your Score",
+        "description": "Get your target score with our proven methodology and expert guidance."
+      }
+    ]
+  },
+  "successStories": {
+    "eyebrow": "Success Stories",
+    "title": "Real Students, Real Results",
+    "description": "Join the league of successful students who achieved their dreams with Grey Matters.",
+    "stories": [
+      {
+        "name": "Priya Sharma",
+        "score": "8.5 Band",
+        "exam": "IELTS Academic",
+        "destination": "Canada",
+        "university": "University of Toronto",
+        "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+        "testimonial": "Grey Matters transformed my IELTS preparation. The live classes, mock tests, and personalized feedback helped me achieve 8.5 bands in just 6 weeks. Now studying at UofT!"
+      },
+      {
+        "name": "Rahul Patel",
+        "score": "85 Score",
+        "exam": "PTE Academic",
+        "destination": "Australia",
+        "university": "University of Melbourne",
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+        "testimonial": "The AI-powered practice tests at Grey Matters are incredible. I could track my progress daily and focus on my weak areas. Scored 85 on my first attempt!"
+      },
+      {
+        "name": "Anjali Reddy",
+        "score": "7.5 Band",
+        "exam": "IELTS General",
+        "destination": "UK",
+        "university": "London School of Economics",
+        "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+        "testimonial": "The trainers at Grey Matters are simply the best. Their strategies for writing and speaking made all the difference. Forever grateful!"
+      },
+      {
+        "name": "Vikram Singh",
+        "score": "PR Visa",
+        "exam": "Express Entry",
+        "destination": "Canada",
+        "university": "Immigration",
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
+        "testimonial": "From IELTS preparation to PR visa filing, Grey Matters handled everything seamlessly. Got my Canada PR in just 8 months!"
+      }
+    ],
+    "stats": [
+      {
+        "value": "7.0+",
+        "label": "Avg IELTS Score"
+      },
+      {
+        "value": "75+",
+        "label": "Avg PTE Score"
+      },
+      {
+        "value": "98%",
+        "label": "Success Rate"
+      },
+      {
+        "value": "50K+",
+        "label": "Visas Approved"
+      }
+    ]
+  }
+}

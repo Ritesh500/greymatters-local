@@ -1,10 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { createPageUrl } from '@/utils';
-import { ArrowRight, Phone, MessageCircle, Calendar } from 'lucide-react';
+import { ArrowRight, Phone, Calendar } from 'lucide-react';
+
+const DEFAULTS = {
+  badge: 'Start Your Journey',
+  heading: 'Ready to Achieve Your',
+  headingHighlight: 'Dream Score?',
+  description: 'Join 25 lakh+ students who have transformed their futures with Grey Matters. Book your free consultation today and take the first step towards your global career.',
+  primaryBtn: 'Book Free Consultation',
+  callPhone: '+919988892587',
+  callLabel: 'Call Now',
+  trustSignal: 'Join 25 lakh+ students • Expert trainers • Real results',
+  cards: [
+    { icon: '🎓', title: 'Free Demo Class', desc: 'Experience our teaching' },
+    { icon: '📊', title: 'Free Assessment', desc: 'Know your current level' },
+    { icon: '📋', title: 'Study Plan', desc: 'Personalized roadmap' },
+    { icon: '💬', title: 'Expert Guidance', desc: 'Immigration counseling' },
+  ],
+};
 
 export default function CTASection() {
+  const [c, setC] = useState(DEFAULTS);
+
+  useEffect(() => {
+    fetch('/api/admin/content/global')
+      .then(r => r.json())
+      .then(data => { if (data?.cta) setC({ ...DEFAULTS, ...data.cta }); })
+      .catch(() => {});
+  }, []);
+
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="absolute inset-0">
@@ -14,7 +40,6 @@ export default function CTASection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-3xl p-8 md:p-16 overflow-hidden relative">
-          {/* Background Pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_45%,rgba(255,255,255,0.1)_45%,rgba(255,255,255,0.1)_55%,transparent_55%)] bg-[size:20px_20px]" />
           </div>
@@ -27,39 +52,34 @@ export default function CTASection() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <span className="inline-block px-4 py-1.5 bg-red-500/20 text-red-300 text-sm font-medium rounded-full mb-6">
-                Start Your Journey
+                {c.badge}
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-                Ready to Achieve Your <span className="text-red-400">Dream Score?</span>
+                {c.heading} <span className="text-red-400">{c.headingHighlight}</span>
               </h2>
-              <p className="text-lg text-slate-300 leading-relaxed mb-8">
-                Join 25 lakh+ students who have transformed their futures with Grey Matters. 
-                Book your free consultation today and take the first step towards your global career.
-              </p>
+              <p className="text-lg text-slate-300 leading-relaxed mb-8">{c.description}</p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Link 
+                <Link
                   href={createPageUrl('BookConsultation') || '/'}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-red-500 to-red-600 text-white font-semibold rounded-full hover:from-red-600 hover:to-red-700 transition-all duration-500 group shadow-2xl shadow-red-500/40 hover:shadow-red-500/60 transform hover:scale-105"
                 >
                   <Calendar className="w-5 h-5" />
-                  Book Free Consultation
+                  {c.primaryBtn}
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
-
-                <a 
-                  href="tel:+919988892587"
+                <a
+                  href={`tel:${c.callPhone}`}
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/20 hover:border-white/50 transition-all duration-500 backdrop-blur-sm transform hover:scale-105"
                 >
                   <Phone className="w-5 h-5" />
-                  Call Now
+                  {c.callLabel}
                 </a>
               </div>
-              
-              {/* Trust Signal - ADDED MORE SPACING */}
+
               <p className="text-sm text-slate-300 flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                Join 25 lakh+ students • Expert trainers • Real results
+                {c.trustSignal}
               </p>
             </motion.div>
 
@@ -70,12 +90,7 @@ export default function CTASection() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
               className="grid grid-cols-2 gap-4"
             >
-              {[
-                { icon: '🎓', title: 'Free Demo Class', desc: 'Experience our teaching' },
-                { icon: '📊', title: 'Free Assessment', desc: 'Know your current level' },
-                { icon: '📋', title: 'Study Plan', desc: 'Personalized roadmap' },
-                { icon: '💬', title: 'Expert Guidance', desc: 'Immigration counseling' }
-              ].map((item, idx) => (
+              {c.cards.map((item, idx) => (
                 <motion.div
                   key={idx}
                   initial={{ opacity: 0, y: 30 }}

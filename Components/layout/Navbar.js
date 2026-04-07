@@ -6,7 +6,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import StudentLoginTransition from '@/Components/common/StudentLoginTransition';
 
-export default function Navbar() {
+const DEFAULT_NAV_LINKS = [
+  { label: 'Home', href: 'Home' },
+  {
+    label: 'Courses',
+    href: 'Courses',
+    dropdown: [
+      { label: 'IELTS Online', href: 'Courses?category=ielts' },
+      { label: 'PTE Academic', href: 'Courses?category=pte' },
+      { label: 'Spoken English', href: 'Courses?category=spoken_english' },
+    ],
+  },
+  { label: 'Immigration', href: 'Immigration' },
+  { label: 'Results', href: 'SuccessStories' },
+  { label: 'About', href: 'About' },
+  { label: 'Blog', href: 'Blog' },
+  { label: 'Contact', href: 'Contact' },
+];
+
+export default function Navbar({ globalContent }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -40,23 +58,7 @@ export default function Navbar() {
     }, 3800);
   };
 
-  const navLinks = [
-    { label: 'Home', href: 'Home' },
-    {
-      label: 'Courses',
-      href: 'Courses',
-      dropdown: [
-        { label: 'IELTS Online', href: 'Courses?category=ielts' },
-        { label: 'PTE Academic', href: 'Courses?category=pte' },
-        { label: 'Spoken English', href: 'Courses?category=spoken_english' }
-      ]
-    },
-    { label: 'Immigration', href: 'Immigration' },
-    { label: 'Results', href: 'SuccessStories' },
-    { label: 'About', href: 'About' },
-    { label: 'Blog', href: 'Blog' },
-    { label: 'Contact', href: 'Contact' }
-  ];
+  const navLinks = globalContent?.navLinks ?? DEFAULT_NAV_LINKS;
 
   return (
     <>
@@ -101,7 +103,7 @@ export default function Navbar() {
                     key={link.href}
                     className="relative"
                     onMouseEnter={() =>
-                      link.dropdown && setActiveDropdown(link.label)
+                      link.dropdown?.length && setActiveDropdown(link.label)
                     }
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
@@ -119,7 +121,7 @@ export default function Navbar() {
                       }`}
                     >
                       {link.label}
-                      {link.dropdown && (
+                      {link.dropdown?.length > 0 && (
                         <ChevronDown className="w-3.5 h-3.5 mt-0.5" />
                       )}
                       {isActive && (
@@ -132,7 +134,7 @@ export default function Navbar() {
 
                     {/* DROPDOWN */}
                     <AnimatePresence>
-                      {link.dropdown && activeDropdown === link.label && (
+                      {link.dropdown?.length && activeDropdown === link.label && (
                         <motion.div
                           initial={{ opacity: 0, y: 6 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -171,7 +173,7 @@ export default function Navbar() {
             <div className="hidden lg:flex items-center gap-3">
               <button
                 onClick={handleStudentLogin}
-                className="px-5 py-2.5 text-sm font-semibold border-2 border-slate-900 rounded-full hover:bg-slate-900 hover:text-white transition"
+                className="px-5 py-2.5 text-sm text-slate-700 font-semibold border-2 border-slate-900 rounded-full hover:bg-slate-900 hover:text-white transition"
               >
                 Student Login
               </button>

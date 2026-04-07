@@ -138,10 +138,10 @@ export default function StudentPortal() {
               {/* Login Method Tabs */}
               <Tabs value={loginMethod} onValueChange={setLoginMethod} className="mb-6">
                 <TabsList className="grid w-full grid-cols-2 bg-slate-100 p-1">
-                  <TabsTrigger value="password" className="rounded-lg">
+                  <TabsTrigger value="password" className="rounded-lg text-slate-700">
                     Password
                   </TabsTrigger>
-                  <TabsTrigger value="otp" className="rounded-lg">
+                  <TabsTrigger value="otp" className="rounded-lg text-slate-700">
                     OTP Login
                   </TabsTrigger>
                 </TabsList>

@@ -5,15 +5,22 @@ import CoursesPreview from '@/Components/home/CoursesPreview';
 import HowItWorks from '@/Components/home/HowItWorks';
 import SuccessStoriesSection from '@/Components/home/SuccessStoriesSection';
 import CTASection from '@/Components/home/CTASection';
+import { getContent } from '@/lib/content';
 
-export default function Home() {
+export async function getServerSideProps() {
+  const content = getContent('home');
+  return { props: { content } };
+}
+
+export default function Home({ content }) {
+  const c = content || {};
   return (
     <>
-      <HeroSection />
-      <TrustSection />
-      <CoursesPreview />
-      <HowItWorks />
-      <SuccessStoriesSection />
+      <HeroSection content={c.hero} />
+      <TrustSection content={c.trust} />
+      <CoursesPreview content={c.coursesPreview} />
+      <HowItWorks content={c.howItWorks} />
+      <SuccessStoriesSection content={c.successStories} />
       <CTASection />
     </>
   );

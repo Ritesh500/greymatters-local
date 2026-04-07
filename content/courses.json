@@ -1,0 +1,266 @@
+{
+  "hero": {
+    "badge": "Expert-Led Programs",
+    "heading": "Online Courses Designed for",
+    "headingHighlight": "Success",
+    "description": "Join 5 lakh+ students who achieved their dream scores with our proven methodology and expert trainers."
+  },
+  "whyUs": {
+    "eyebrow": "Why Grey Matters Online",
+    "title": "The Gold Standard in Test Preparation",
+    "items": [
+      { "icon": "🎓", "title": "Expert Trainers", "desc": "British Council & Pearson certified" },
+      { "icon": "📊", "title": "Proven Results", "desc": "98% students achieve target score" },
+      { "icon": "🎯", "title": "Score Guarantee", "desc": "Free retake if you don't score" },
+      { "icon": "💬", "title": "Live Classes", "desc": "Interactive sessions, not recordings" }
+    ]
+  },
+  "courses": [
+    {
+      "id": "ielts",
+      "category": "ielts",
+      "title": "IELTS Online Masterclass",
+      "subtitle": "Academic & General Training",
+      "description": "Comprehensive preparation with live classes, unlimited mock tests, and personalized feedback from British Council certified trainers.",
+      "color": "red",
+      "image": "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800",
+      "price": 9999,
+      "originalPrice": 14999,
+      "duration": "6-8 Weeks",
+      "students": "2L+",
+      "rating": 4.9,
+      "features": [
+        "60+ Live Interactive Classes",
+        "15 Full Mock Tests with Evaluation",
+        "100+ Practice Tests per Module",
+        "Speaking Practice with Experts",
+        "Writing Evaluation & Feedback",
+        "Doubt Resolution Sessions",
+        "Score Guarantee Program"
+      ],
+      "outcomes": [
+        "Achieve Band 7+ Score",
+        "Master all 4 Modules",
+        "Exam-Ready Confidence",
+        "Time Management Skills"
+      ],
+      "whoIsItFor": [
+        "Students planning to study abroad",
+        "PR applicants for Canada/Australia",
+        "Working professionals",
+        "First-time IELTS takers"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "curriculum": [
+        {
+          "title": "Listening Module Mastery",
+          "lessons": 12,
+          "duration": "8 hours",
+          "topics": [
+            "Understanding different accents and dialects",
+            "Note-taking strategies for audio passages",
+            "Practice with IELTS-style questions",
+            "Time management techniques"
+          ]
+        },
+        {
+          "title": "Reading Comprehension",
+          "lessons": 15,
+          "duration": "10 hours",
+          "topics": [
+            "Skimming and scanning techniques",
+            "Understanding academic texts",
+            "Answering different question types",
+            "Building vocabulary for IELTS"
+          ]
+        },
+        {
+          "title": "Writing Task 1 & 2",
+          "lessons": 18,
+          "duration": "12 hours",
+          "topics": [
+            "Essay structure and planning",
+            "Task 1: Graphs, charts, and diagrams",
+            "Task 2: Opinion and discussion essays",
+            "Grammar and vocabulary enhancement"
+          ]
+        },
+        {
+          "title": "Speaking Excellence",
+          "lessons": 15,
+          "duration": "10 hours",
+          "topics": [
+            "Part 1: Introduction and interview",
+            "Part 2: Individual long turn",
+            "Part 3: Two-way discussion",
+            "Pronunciation and fluency practice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pte",
+      "category": "pte",
+      "title": "PTE Academic Pro",
+      "subtitle": "AI-Powered Preparation",
+      "description": "Master PTE with our AI-driven platform featuring unlimited practice, instant scoring, and expert-led live sessions.",
+      "color": "blue",
+      "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+      "price": 8999,
+      "originalPrice": 12999,
+      "duration": "4-6 Weeks",
+      "students": "80K+",
+      "rating": 4.8,
+      "features": [
+        "40+ Live Expert Sessions",
+        "Unlimited AI Practice Tests",
+        "Real-time Score Analysis",
+        "Speaking & Writing AI Feedback",
+        "Question Bank: 5000+ Questions",
+        "Sectional Tests & Full Mocks",
+        "Target Score Guarantee"
+      ],
+      "outcomes": [
+        "Achieve 79+ Score",
+        "AI-Level Speaking Fluency",
+        "Perfect Writing Templates",
+        "Fast Reading Strategies"
+      ],
+      "whoIsItFor": [
+        "Australia PR applicants",
+        "Quick score requirements",
+        "Tech-savvy learners",
+        "Multiple attempt students"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "curriculum": [
+        {
+          "title": "Speaking Mastery with AI",
+          "lessons": 10,
+          "duration": "6 hours",
+          "topics": [
+            "AI-powered pronunciation analysis",
+            "Fluency and coherence building",
+            "Content development strategies",
+            "Real-time feedback practice"
+          ]
+        },
+        {
+          "title": "Writing Excellence",
+          "lessons": 12,
+          "duration": "8 hours",
+          "topics": [
+            "Essay templates and structures",
+            "Summarization techniques",
+            "Grammar accuracy improvement",
+            "AI-based error correction"
+          ]
+        },
+        {
+          "title": "Reading Strategies",
+          "lessons": 8,
+          "duration": "5 hours",
+          "topics": [
+            "Speed reading techniques",
+            "Multiple choice strategies",
+            "Re-order paragraphs mastery",
+            "Fill in the blanks practice"
+          ]
+        },
+        {
+          "title": "Listening Techniques",
+          "lessons": 10,
+          "duration": "6 hours",
+          "topics": [
+            "Summarize spoken text",
+            "Multiple choice questions",
+            "Fill in the blanks strategies",
+            "Write from dictation practice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spoken-english",
+      "category": "spoken_english",
+      "title": "Spoken English Mastery",
+      "subtitle": "Fluency & Confidence Program",
+      "description": "Build confidence in English communication with personalized coaching, conversation practice, and real-world application.",
+      "color": "emerald",
+      "image": "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800",
+      "price": 6999,
+      "originalPrice": 9999,
+      "duration": "8-12 Weeks",
+      "students": "50K+",
+      "rating": 4.9,
+      "features": [
+        "1-on-1 Coaching Sessions",
+        "Group Conversation Practice",
+        "Pronunciation Training",
+        "Business English Module",
+        "Interview Preparation",
+        "Public Speaking Skills",
+        "Certificate of Completion"
+      ],
+      "outcomes": [
+        "Fluent English Speaking",
+        "Professional Communication",
+        "Accent Neutralization",
+        "Confidence Building"
+      ],
+      "whoIsItFor": [
+        "Working professionals",
+        "College students",
+        "Job seekers",
+        "Business communication needs"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "curriculum": [
+        {
+          "title": "Foundation & Basics",
+          "lessons": 8,
+          "duration": "5 hours",
+          "topics": [
+            "Grammar fundamentals",
+            "Basic vocabulary building",
+            "Simple sentence formation",
+            "Everyday conversation practice"
+          ]
+        },
+        {
+          "title": "Intermediate Communication",
+          "lessons": 12,
+          "duration": "8 hours",
+          "topics": [
+            "Advanced grammar concepts",
+            "Professional vocabulary",
+            "Business communication",
+            "Email and report writing"
+          ]
+        },
+        {
+          "title": "Advanced Fluency",
+          "lessons": 10,
+          "duration": "7 hours",
+          "topics": [
+            "Accent neutralization",
+            "Public speaking techniques",
+            "Debate and discussion skills",
+            "Presentation delivery"
+          ]
+        },
+        {
+          "title": "Real-World Application",
+          "lessons": 10,
+          "duration": "7 hours",
+          "topics": [
+            "Interview preparation",
+            "Networking conversations",
+            "Negotiation skills",
+            "Cultural communication"
+          ]
+        }
+      ]
+    }
+  ]
+}

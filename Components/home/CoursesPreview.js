@@ -5,142 +5,97 @@ import { createPageUrl } from '@/utils';
 import { ArrowRight, Clock, Users, Star, BookOpen, Mic, Plane } from 'lucide-react';
 import SectionHeading from '../common/SectionHeading';
 
-export default function CoursesPreview() {
-  const courses = [
-    {
-      id: 'ielts',
-      title: 'IELTS Online',
-      description:
-        'Comprehensive preparation for Academic & General Training with expert instructors',
-      icon: BookOpen,
-      color: 'from-red-500 to-red-600',
-      bgColor: 'bg-red-50',
-      features: ['Live Classes', 'Mock Tests', 'Band 7+ Guarantee'],
-      students: '2L+',
-      rating: 4.9,
-      duration: '6-8 Weeks',
-    },
-    {
-      id: 'pte',
-      title: 'PTE Academic',
-      description:
-        'AI-driven coaching for PTE with unlimited practice tests and instant scoring',
-      icon: Mic,
-      color: 'from-blue-500 to-blue-600',
-      bgColor: 'bg-blue-50',
-      features: ['AI Practice', 'Score Analytics', '79+ Target'],
-      students: '80K+',
-      rating: 4.8,
-      duration: '4-6 Weeks',
-    },
-    {
-      id: 'spoken_english',
-      title: 'Spoken English',
-      description:
-        'Fluency-focused program to build confidence for global communication',
-      icon: Mic,
-      color: 'from-emerald-500 to-emerald-600',
-      bgColor: 'bg-emerald-50',
-      features: ['1-on-1 Sessions', 'Native Speakers', 'Certification'],
-      students: '50K+',
-      rating: 4.9,
-      duration: '8-12 Weeks',
-    },
-    {
-      id: 'immigration',
-      title: 'Immigration Services',
-      description:
-        'End-to-end visa guidance for Canada, Australia, UK, New Zealand & more',
-      icon: Plane,
-      color: 'from-violet-500 to-violet-600',
-      bgColor: 'bg-violet-50',
-      features: ['PR Pathways', 'Document Support', 'Interview Prep'],
-      students: '50K+',
-      rating: 4.9,
-      duration: 'Ongoing',
-    },
-  ];
+// Icon map by course id
+const ICON_MAP = {
+  ielts: BookOpen,
+  pte: Mic,
+  spoken_english: Mic,
+  immigration: Plane,
+};
+
+const COLOR_MAP = {
+  ielts: { bg: 'bg-red-50', gradient: 'from-red-500 to-red-600' },
+  pte: { bg: 'bg-blue-50', gradient: 'from-blue-500 to-blue-600' },
+  spoken_english: { bg: 'bg-emerald-50', gradient: 'from-emerald-500 to-emerald-600' },
+  immigration: { bg: 'bg-violet-50', gradient: 'from-violet-500 to-violet-600' },
+};
+
+const DEFAULT_COURSES = [
+  { id: 'ielts', title: 'IELTS Online', description: 'Comprehensive preparation for Academic & General Training with expert instructors', features: ['Live Classes', 'Mock Tests', 'Band 7+ Guarantee'], students: '2L+', rating: 4.9, duration: '6-8 Weeks' },
+  { id: 'pte', title: 'PTE Academic', description: 'AI-driven coaching for PTE with unlimited practice tests and instant scoring', features: ['AI Practice', 'Score Analytics', '79+ Target'], students: '80K+', rating: 4.8, duration: '4-6 Weeks' },
+  { id: 'spoken_english', title: 'Spoken English', description: 'Fluency-focused program to build confidence for global communication', features: ['1-on-1 Sessions', 'Native Speakers', 'Certification'], students: '50K+', rating: 4.9, duration: '8-12 Weeks' },
+  { id: 'immigration', title: 'Immigration Services', description: 'End-to-end visa guidance for Canada, Australia, UK, New Zealand & more', features: ['PR Pathways', 'Document Support', 'Interview Prep'], students: '50K+', rating: 4.9, duration: 'Ongoing' },
+];
+
+export default function CoursesPreview({ content }) {
+  const c = content || {};
+  const eyebrow = c.eyebrow ?? 'Our Programs';
+  const title = c.title ?? 'Choose Your Path to Success';
+  const description = c.description ?? "Whether it's test preparation or immigration, our expert-led programs are designed to maximize your potential.";
+  const courses = c.courses ?? DEFAULT_COURSES;
 
   return (
     <section className="py-24 bg-slate-50 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Our Programs"
-          title="Choose Your Path to Success"
-          description="Whether it's test preparation or immigration, our expert-led programs are designed to maximize your potential."
-        />
+        <SectionHeading eyebrow={eyebrow} title={title} description={description} />
 
         <div className="grid md:grid-cols-2 gap-8">
-          {courses.map((course, index) => (
-            <motion.div
-              key={course.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Link
-                href={
-                  (createPageUrl('Courses') || '/') +
-                  `?category=${course.id}`
-                }
+          {courses.map((course, index) => {
+            const Icon = ICON_MAP[course.id] || BookOpen;
+            const colors = COLOR_MAP[course.id] || { bg: 'bg-slate-50', gradient: 'from-slate-500 to-slate-600' };
+            const features = Array.isArray(course.features) ? course.features : [];
+
+            return (
+              <motion.div
+                key={course.id || index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
               >
-                <div className="group bg-white rounded-3xl p-8 h-full border border-slate-100 hover:border-slate-200 hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500">
-                  <div className="flex items-start justify-between mb-6">
-                    <div
-                      className={`w-16 h-16 ${course.bgColor} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                    >
-                      <course.icon
-                        className={`w-8 h-8 bg-gradient-to-r ${course.color} bg-clip-text text-transparent`}
-                      />
-                    </div>
-                    <div className="flex items-center gap-1 text-amber-500">
-                      <Star className="w-5 h-5 fill-current" />
-                      <span className="font-bold text-slate-900">
-                        {course.rating}
-                      </span>
-                    </div>
-                  </div>
-
-                  <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors">
-                    {course.title}
-                  </h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">
-                    {course.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {course.features.map((feature, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 bg-slate-100 text-slate-700 text-sm font-medium rounded-full"
-                      >
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-6 border-t border-slate-100">
-                    <div className="flex items-center gap-6">
-                      <div className="flex items-center gap-2 text-slate-500">
-                        <Users className="w-4 h-4" />
-                        <span className="text-sm font-medium">
-                          {course.students} Students
-                        </span>
+                <Link href={(createPageUrl('Courses') || '/') + `?category=${course.id}`}>
+                  <div className="group bg-white rounded-3xl p-8 h-full border border-slate-100 hover:border-slate-200 hover:shadow-2xl hover:shadow-slate-200/50 transition-all duration-500">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className={`w-8 h-8 bg-gradient-to-r ${colors.gradient} bg-clip-text text-transparent`} />
                       </div>
-                      <div className="flex items-center gap-2 text-slate-500">
-                        <Clock className="w-4 h-4" />
-                        <span className="text-sm font-medium">
-                          {course.duration}
-                        </span>
+                      <div className="flex items-center gap-1 text-amber-500">
+                        <Star className="w-5 h-5 fill-current" />
+                        <span className="font-bold text-slate-900">{course.rating}</span>
                       </div>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-red-600 group-hover:translate-x-2 transition-all duration-300" />
+
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-red-600 transition-colors">
+                      {course.title}
+                    </h3>
+                    <p className="text-slate-600 mb-6 leading-relaxed">{course.description}</p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {features.map((feature, i) => (
+                        <span key={i} className="px-3 py-1 bg-slate-100 text-slate-700 text-sm font-medium rounded-full">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between pt-6 border-t border-slate-100">
+                      <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-2 text-slate-500">
+                          <Users className="w-4 h-4" />
+                          <span className="text-sm font-medium">{course.students} Students</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-slate-500">
+                          <Clock className="w-4 h-4" />
+                          <span className="text-sm font-medium">{course.duration}</span>
+                        </div>
+                      </div>
+                      <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-red-600 group-hover:translate-x-2 transition-all duration-300" />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div

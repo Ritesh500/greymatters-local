@@ -1,0 +1,49 @@
+{
+  "navLinks": [
+    { "label": "Home", "href": "Home" },
+    {
+      "label": "Courses",
+      "href": "Courses",
+      "dropdown": [
+        { "label": "IELTS Online", "href": "Courses?category=ielts" },
+        { "label": "PTE Academic", "href": "Courses?category=pte" },
+        { "label": "Spoken English", "href": "Courses?category=spoken_english" }
+      ]
+    },
+    { "label": "Immigration", "href": "Immigration" },
+    { "label": "Results", "href": "SuccessStories" },
+    { "label": "About", "href": "About" },
+    { "label": "Blog", "href": "Blog" },
+    { "label": "Contact", "href": "Contact" }
+  ],
+  "footer": {
+    "description": "India's #1 IELTS, PTE & Immigration brand since 1997. Building global futures through expert-led education and trusted guidance.",
+    "address": "S.C.O. 63–64, Sector 17, Chandigarh – 160017, India",
+    "phone": "+91 99888 92587",
+    "email": "info@greymattersgroup.org",
+    "destinations": ["Canada", "Australia", "UK", "USA", "New Zealand", "Germany"],
+    "socialLinks": [
+      { "platform": "Facebook", "href": "https://www.facebook.com/greymatterschandigarh", "active": true },
+      { "platform": "Instagram", "href": "https://www.instagram.com/greymattersindia/", "active": true },
+      { "platform": "YouTube", "href": "https://www.youtube.com/@GREYMATTERSCHANDIGARH", "active": true },
+      { "platform": "Twitter", "href": "#", "active": false },
+      { "platform": "LinkedIn", "href": "#", "active": false }
+    ]
+  },
+  "cta": {
+    "badge": "Start Your Journey",
+    "heading": "Ready to Achieve Your",
+    "headingHighlight": "Dream Score?",
+    "description": "Join 25 lakh+ students who have transformed their futures with Grey Matters. Book your free consultation today and take the first step towards your global career.",
+    "primaryBtn": "Book Free Consultation",
+    "callPhone": "+919988892587",
+    "callLabel": "Call Now",
+    "trustSignal": "Join 25 lakh+ students • Expert trainers • Real results",
+    "cards": [
+      { "icon": "🎓", "title": "Free Demo Class", "desc": "Experience our teaching" },
+      { "icon": "📊", "title": "Free Assessment", "desc": "Know your current level" },
+      { "icon": "📋", "title": "Study Plan", "desc": "Personalized roadmap" },
+      { "icon": "💬", "title": "Expert Guidance", "desc": "Immigration counseling" }
+    ]
+  }
+}

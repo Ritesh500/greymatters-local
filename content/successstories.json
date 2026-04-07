@@ -1,0 +1,133 @@
+{
+  "hero": {
+    "badge": "Real Students, Real Results",
+    "heading": "Success Stories That",
+    "headingHighlight": "Inspire",
+    "description": "Join 25 lakh+ students who transformed their futures with Grey Matters. Your success story could be next."
+  },
+  "stats": [
+    { "value": 2500000, "suffix": "+", "label": "Students Trained" },
+    { "value": 50000, "suffix": "+", "label": "Visas Approved" },
+    { "value": 98, "suffix": "%", "label": "Success Rate" },
+    { "value": 29, "suffix": "+", "label": "Years of Trust" }
+  ],
+  "stories": [
+    {
+      "id": 1,
+      "name": "Priya Sharma",
+      "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
+      "exam": "ielts",
+      "score": "8.5 Band",
+      "destination": "Canada",
+      "university": "University of Toronto",
+      "year": 2024,
+      "testimonial": "Grey Matters completely transformed my IELTS preparation. The structured approach, mock tests, and personalized feedback helped me achieve 8.5 bands in just 6 weeks. The trainers were incredible and always available to clear my doubts."
+    },
+    {
+      "id": 2,
+      "name": "Rahul Patel",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400",
+      "exam": "pte",
+      "score": "85 Score",
+      "destination": "Australia",
+      "university": "University of Melbourne",
+      "year": 2024,
+      "testimonial": "The AI-powered practice tests at Grey Matters are incredible. I could track my progress daily and focus on my weak areas. The speaking module strategies were game-changers. Scored 85 on my first attempt!"
+    },
+    {
+      "id": 3,
+      "name": "Anjali Reddy",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
+      "exam": "ielts",
+      "score": "7.5 Band",
+      "destination": "UK",
+      "university": "London School of Economics",
+      "year": 2023,
+      "testimonial": "The trainers at Grey Matters are simply the best. Their strategies for writing and speaking made all the difference. I'm now pursuing my dream of studying at LSE. Forever grateful!"
+    },
+    {
+      "id": 4,
+      "name": "Vikram Singh",
+      "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
+      "exam": "visa",
+      "score": "PR Approved",
+      "destination": "Canada",
+      "university": "Express Entry",
+      "year": 2024,
+      "testimonial": "From IELTS preparation to PR visa filing, Grey Matters handled everything seamlessly. The immigration team was extremely professional and kept me updated throughout. Got my Canada PR in just 8 months!"
+    },
+    {
+      "id": 5,
+      "name": "Sneha Gupta",
+      "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400",
+      "exam": "pte",
+      "score": "90 Score",
+      "destination": "Australia",
+      "university": "Monash University",
+      "year": 2024,
+      "testimonial": "I had failed PTE twice before joining Grey Matters. Their diagnostic approach identified my weaknesses, and with targeted practice, I scored 90 on my third attempt. The difference was incredible!"
+    },
+    {
+      "id": 6,
+      "name": "Arjun Menon",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400",
+      "exam": "ielts",
+      "score": "8.0 Band",
+      "destination": "USA",
+      "university": "MIT",
+      "year": 2023,
+      "testimonial": "Grey Matters' online classes fit perfectly with my work schedule. The quality of teaching was exceptional, and the mock tests were very close to the actual exam. Achieved my dream score!"
+    },
+    {
+      "id": 7,
+      "name": "Meera Krishnan",
+      "image": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400",
+      "exam": "visa",
+      "score": "PR Approved",
+      "destination": "Australia",
+      "university": "Skilled Migration",
+      "year": 2024,
+      "testimonial": "The immigration consultants at Grey Matters were so thorough. They guided me through every step of the 189 visa process. Their attention to detail is what got my visa approved without any issues."
+    },
+    {
+      "id": 8,
+      "name": "Karan Malhotra",
+      "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
+      "exam": "ielts",
+      "score": "7.0 Band",
+      "destination": "Canada",
+      "university": "University of British Columbia",
+      "year": 2023,
+      "testimonial": "As a working professional, I needed flexible learning options. Grey Matters Online gave me exactly that. The recorded sessions, live doubt sessions, and personalized feedback were perfect for my schedule."
+    }
+  ],
+  "scoreHighlights": [
+    {
+      "title": "IELTS Achievers",
+      "scores": [
+        { "score": "9 Band", "count": "50+" },
+        { "score": "8.5 Band", "count": "500+" },
+        { "score": "8.0 Band", "count": "2000+" },
+        { "score": "7.5 Band", "count": "5000+" }
+      ]
+    },
+    {
+      "title": "PTE Champions",
+      "scores": [
+        { "score": "90 Score", "count": "100+" },
+        { "score": "85+ Score", "count": "1000+" },
+        { "score": "79+ Score", "count": "3000+" },
+        { "score": "65+ Score", "count": "8000+" }
+      ]
+    },
+    {
+      "title": "Visa Success",
+      "scores": [
+        { "score": "Canada PR", "count": "15000+" },
+        { "score": "Australia PR", "count": "12000+" },
+        { "score": "UK Visa", "count": "20000+" },
+        { "score": "US Visa", "count": "8000+" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "badge": "Simple & Proven Process",
+    "heading": "How Grey Matters",
+    "headingHighlight": "Works",
+    "description": "A simple, proven 5-step journey that has helped over 5 lakh students achieve their dreams. From consultation to celebration—we're with you every step."
+  },
+  "steps": [
+    {
+      "step": "01",
+      "title": "Book a Free Consultation",
+      "description": "Schedule a one-on-one session with our expert counselors. We'll understand your goals, assess your current level, and recommend the perfect program for you.",
+      "details": ["Free 30-minute session", "Skill assessment test", "Personalized study plan", "Course recommendations"]
+    },
+    {
+      "step": "02",
+      "title": "Enroll & Get Started",
+      "description": "Choose your preferred batch timing and enroll in the program. Get instant access to our learning portal with all study materials.",
+      "details": ["Multiple batch timings", "Instant portal access", "Complete study materials", "Mobile app access"]
+    },
+    {
+      "step": "03",
+      "title": "Learn with Experts",
+      "description": "Attend live interactive classes with certified trainers. Practice with unlimited mock tests and get personalized feedback on every assignment.",
+      "details": ["Live interactive classes", "Unlimited mock tests", "Writing evaluations", "Speaking practice"]
+    },
+    {
+      "step": "04",
+      "title": "Track Your Progress",
+      "description": "Monitor your improvement with detailed analytics. Get AI-powered insights and recommendations to focus on weak areas.",
+      "details": ["Real-time analytics", "Performance reports", "AI recommendations", "Doubt resolution"]
+    },
+    {
+      "step": "05",
+      "title": "Achieve Your Score",
+      "description": "Take the exam with confidence and achieve your target score. Our students consistently outperform with an average improvement of 2+ bands.",
+      "details": ["Target score guarantee", "Free retake option", "Visa assistance", "Career guidance"]
+    }
+  ],
+  "features": [
+    { "title": "Live Interactive Classes", "description": "Not pre-recorded videos. Real-time interaction with expert trainers." },
+    { "title": "Doubt Resolution", "description": "24/7 support via chat, email, and scheduled doubt-clearing sessions." },
+    { "title": "Comprehensive Materials", "description": "Curated study materials, practice questions, and exam strategies." },
+    { "title": "Certified Trainers", "description": "British Council and Pearson certified trainers with 10+ years experience." },
+    { "title": "Flexible Scheduling", "description": "Morning, evening, and weekend batches to suit your schedule." },
+    { "title": "Small Batch Size", "description": "Maximum 15 students per batch for personalized attention." }
+  ],
+  "guarantee": {
+    "badge": "Our Promise",
+    "title": "Score Guarantee Program",
+    "description": "We're so confident in our training methodology that we offer a score guarantee. If you don't achieve your target score, you can retake the course absolutely free.",
+    "conditions": ["Attend 90% of classes", "Complete all assignments", "Take all mock tests", "Follow study plan"],
+    "stats": [
+      { "value": "7+", "label": "IELTS Band Guarantee" },
+      { "value": "79+", "label": "PTE Score Guarantee" },
+      { "value": "100%", "label": "Refund if Conditions Met" },
+      { "value": "98%", "label": "Students Achieve Target" }
+    ]
+  },
+  "faqs": [
+    {
+      "q": "How long does it take to complete the course?",
+      "a": "Our IELTS course is 6-8 weeks, PTE is 4-6 weeks, and Spoken English is 8-12 weeks. However, you can extend access if needed."
+    },
+    {
+      "q": "Are the classes live or recorded?",
+      "a": "All our classes are 100% live and interactive. However, recordings are made available for revision purposes."
+    },
+    {
+      "q": "What if I miss a class?",
+      "a": "You can access the recording of missed classes. We also offer make-up classes for important sessions."
+    },
+    {
+      "q": "Do you provide study materials?",
+      "a": "Yes, comprehensive study materials, practice tests, and resources are included in all our courses at no extra cost."
+    }
+  ]
+}

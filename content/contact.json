@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "badge": "We're Here to Help",
+    "heading": "Get in",
+    "headingHighlight": "Touch",
+    "description": "Have questions about our courses or immigration services? Our team is here to help you every step of the way."
+  },
+  "contactMethods": [
+    {
+      "title": "Call Us",
+      "details": ["+91 99888 92587", "+91 99888 92510"],
+      "actionText": "Call Now",
+      "actionHref": "tel:+919988892587"
+    },
+    {
+      "title": "Email Us",
+      "details": ["info@greymattersgroup.org", "support@greymattersgroup.org"],
+      "actionText": "Send Email",
+      "actionHref": "mailto:info@greymattersgroup.org"
+    },
+    {
+      "title": "WhatsApp",
+      "details": ["+91 99888 92510", "Quick responses guaranteed"],
+      "actionText": "Chat Now",
+      "actionHref": "https://wa.me/919988892510"
+    },
+    {
+      "title": "Visit Us",
+      "details": ["S.C.O. 63-64, Sector 17C", "Chandigarh - 160017"],
+      "actionText": "Get Directions",
+      "actionHref": "https://maps.app.goo.gl/3D1Z9GArs92jZ2NR6"
+    }
+  ],
+  "offices": [
+    { "city": "New Delhi", "address": "123 Education Hub, Sector 15", "phone": "+91 98765 43210" },
+    { "city": "Mumbai", "address": "456 Learning Center, Andheri West", "phone": "+91 98765 43211" },
+    { "city": "Bangalore", "address": "789 Tech Park, Koramangala", "phone": "+91 98765 43212" },
+    { "city": "Hyderabad", "address": "321 Study Point, Banjara Hills", "phone": "+91 98765 43213" }
+  ],
+  "workingHours": {
+    "weekdays": "Monday - Saturday",
+    "weekdaysTime": "9:00 AM - 6:00 PM",
+    "online": "Online Support",
+    "onlineTime": "24/7 Available"
+  }
+}

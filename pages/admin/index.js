@@ -910,7 +910,8 @@ export default function AdminDashboard() {
   const [content, setContent] = useState({});
   const [loadingContent, setLoadingContent] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [saveStatus, setSaveStatus] = useState(null); // 'saved' | 'error' | null
+  const [saveStatus, setSaveStatus] = useState(null); // 'saved' | null
+  const [saveError, setSaveError] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Auth check
@@ -946,6 +947,7 @@ export default function AdminDashboard() {
   const handleSave = async () => {
     setSaving(true);
     setSaveStatus(null);
+    setSaveError(null);
     try {
       const res = await fetch(`/api/admin/content/${activePage}`, {
         method: 'POST',
@@ -956,10 +958,11 @@ export default function AdminDashboard() {
         setSaveStatus('saved');
         setTimeout(() => setSaveStatus(null), 3000);
       } else {
-        setSaveStatus('error');
+        const errData = await res.json().catch(() => ({}));
+        setSaveError(errData.error || `Server error ${res.status}`);
       }
-    } catch {
-      setSaveStatus('error');
+    } catch (err) {
+      setSaveError(err.message || 'Network error');
     } finally {
       setSaving(false);
     }
@@ -1070,8 +1073,10 @@ export default function AdminDashboard() {
                     Saved!
                   </span>
                 )}
-                {saveStatus === 'error' && (
-                  <span className="text-red-500 text-sm font-medium">Save failed</span>
+                {saveError && (
+                  <span className="text-red-500 text-sm font-medium" title={saveError}>
+                    Save failed: {saveError}
+                  </span>
                 )}
                 <button
                   onClick={() => loadContent(activePage)}

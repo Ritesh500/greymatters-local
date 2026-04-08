@@ -1,6 +1,30 @@
 import { getSessionFromRequest } from '@/lib/adminAuth';
 import { getContent, saveContent, isAllowedPage } from '@/lib/content';
 
+async function getContentFromGitHub(page) {
+  const token = process.env.GITHUB_TOKEN;
+  const owner = process.env.GITHUB_OWNER;
+  const repo = process.env.GITHUB_REPO;
+
+  if (!token || !owner || !repo) {
+    // env vars not configured — fall back to disk (build-time snapshot)
+    return getContent(page);
+  }
+
+  const filePath = `content/${page}.json`;
+  const apiBase = `https://api.github.com/repos/${owner}/${repo}/contents/${filePath}`;
+  const headers = {
+    Authorization: `Bearer ${token}`,
+    Accept: 'application/vnd.github.v3+json',
+  };
+
+  const res = await fetch(apiBase, { headers });
+  if (!res.ok) return getContent(page); // fall back on error
+  const fileData = await res.json();
+  const raw = Buffer.from(fileData.content, 'base64').toString('utf-8');
+  return JSON.parse(raw);
+}
+
 async function saveContentViaGitHub(page, data) {
   const token = process.env.GITHUB_TOKEN;
   const owner = process.env.GITHUB_OWNER;
@@ -56,7 +80,8 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'GET') {
-    const content = getContent(page);
+    const isVercel = !!process.env.VERCEL;
+    const content = isVercel ? await getContentFromGitHub(page) : getContent(page);
     return res.json(content);
   }
 

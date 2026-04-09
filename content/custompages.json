@@ -1,0 +1,41 @@
+{
+  "pages": [
+    {
+      "id": "1775656991588",
+      "title": "New Page",
+      "slug": "new-page",
+      "metaTitle": "",
+      "metaDescription": "",
+      "sections": [
+        {
+          "id": "1775657005930",
+          "type": "cards",
+          "content": {
+            "eyebrow": "",
+            "title": "",
+            "description": "",
+            "items": [
+              {
+                "icon": "📌",
+                "title": "",
+                "desc": ""
+              }
+            ]
+          }
+        },
+        {
+          "id": "1775657089603",
+          "type": "hero",
+          "content": {
+            "badge": "",
+            "heading": "",
+            "headingHighlight": "",
+            "description": "",
+            "primaryBtn": "Get Started",
+            "primaryBtnHref": "/bookconsultation"
+          }
+        }
+      ]
+    }
+  ]
+}

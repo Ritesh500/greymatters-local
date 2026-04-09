@@ -4,7 +4,6 @@ import { Star, Quote, MapPin, GraduationCap } from 'lucide-react';
 import SectionHeading from '@/Components/common/SectionHeading';
 import CTASection from '@/Components/home/CTASection';
 import AnimatedCounter from '@/Components/common/AnimatedCounter';
-import { Tabs, TabsList, TabsTrigger } from '@/Components/ui/tabs';
 import { getContent } from '@/lib/content';
 
 export async function getServerSideProps() {
@@ -62,16 +61,28 @@ export default function SuccessStories({ content }) {
       </section>
 
       {/* Filters */}
-      <section className="py-8 bg-white border-b sticky top-20 z-40">
+      <section className="py-5 bg-white border-b sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Tabs value={filter} onValueChange={setFilter}>
-            <TabsList className="bg-slate-100 p-1 rounded-full">
-              <TabsTrigger value="all" className="rounded-full px-6">All Stories</TabsTrigger>
-              <TabsTrigger value="ielts" className="rounded-full px-6">IELTS</TabsTrigger>
-              <TabsTrigger value="pte" className="rounded-full px-6">PTE</TabsTrigger>
-              <TabsTrigger value="visa" className="rounded-full px-6">Immigration</TabsTrigger>
-            </TabsList>
-          </Tabs>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { value: 'all', label: 'All Stories' },
+              { value: 'ielts', label: 'IELTS' },
+              { value: 'pte', label: 'PTE' },
+              { value: 'visa', label: 'Immigration' },
+            ].map(tab => (
+              <button
+                key={tab.value}
+                onClick={() => setFilter(tab.value)}
+                className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                  filter === tab.value
+                    ? 'bg-slate-900 text-white'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 

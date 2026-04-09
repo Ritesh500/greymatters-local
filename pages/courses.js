@@ -8,7 +8,6 @@ import {
 } from 'lucide-react';
 import SectionHeading from '@/Components/common/SectionHeading';
 import CTASection from '@/Components/home/CTASection';
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/Components/ui/tabs';
 import CourseCurriculum from '@/Components/courses/CourseCurriculum';
 import CourseCompare from '@/Components/courses/CourseCompare';
 import VideoPreview from '@/Components/courses/VideoPreview';
@@ -66,16 +65,28 @@ export default function Courses({ content }) {
       {/* Filters */}
       <section className="py-8 bg-white/80 backdrop-blur-xl border-b border-slate-200/50 sticky top-20 z-40 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <Tabs value={activeTab} onValueChange={setActiveTab}>
-              <TabsList className="bg-slate-100 p-1 rounded-full">
-                <TabsTrigger value="all" className="rounded-full px-6">All Courses</TabsTrigger>
-                <TabsTrigger value="ielts" className="rounded-full px-6">IELTS</TabsTrigger>
-                <TabsTrigger value="pte" className="rounded-full px-6">PTE</TabsTrigger>
-                <TabsTrigger value="spoken_english" className="rounded-full px-6">Spoken English</TabsTrigger>
-              </TabsList>
-            </Tabs>
-            <Button onClick={() => setShowCompare(true)} variant="outline" className="hidden md:flex items-center gap-2 rounded-full border-2 hover:border-slate-900">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-2 flex-1">
+              {[
+                { value: 'all', label: 'All Courses' },
+                { value: 'ielts', label: 'IELTS' },
+                { value: 'pte', label: 'PTE' },
+                { value: 'spoken_english', label: 'Spoken English' },
+              ].map(tab => (
+                <button
+                  key={tab.value}
+                  onClick={() => setActiveTab(tab.value)}
+                  className={`px-5 py-1.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                    activeTab === tab.value
+                      ? 'bg-slate-900 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+            <Button onClick={() => setShowCompare(true)} variant="outline" className="hidden md:flex items-center gap-2 rounded-full border-2 hover:border-slate-900 flex-shrink-0">
               <GitCompare className="w-4 h-4" />
               Compare Courses
             </Button>

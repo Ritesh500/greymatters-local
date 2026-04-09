@@ -66,37 +66,6 @@ function StringArrayInput({ value, onChange, placeholder }) {
   );
 }
 
-// Edits a complex value as raw JSON
-function JsonInput({ value, onChange }) {
-  const [raw, setRaw] = useState(JSON.stringify(value, null, 2));
-  const [jsonError, setJsonError] = useState('');
-
-  useEffect(() => {
-    setRaw(JSON.stringify(value, null, 2));
-  }, [value]);
-
-  const handleBlur = () => {
-    try {
-      onChange(JSON.parse(raw));
-      setJsonError('');
-    } catch {
-      setJsonError('Invalid JSON — changes not saved');
-    }
-  };
-
-  return (
-    <div>
-      <textarea
-        value={raw}
-        onChange={e => setRaw(e.target.value)}
-        onBlur={handleBlur}
-        rows={10}
-        className="w-full px-3 py-2 rounded-lg border border-slate-200 text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-y font-mono"
-      />
-      {jsonError && <p className="text-red-500 text-xs mt-1">{jsonError}</p>}
-    </div>
-  );
-}
 
 // Generic array-of-objects editor
 function ArrayEditor({ items = [], onChange, fields, newItem }) {
@@ -180,8 +149,13 @@ function ArrayEditor({ items = [], onChange, fields, newItem }) {
                     <NumberInput value={item[field.key]} onChange={v => update(idx, field.key, v)} placeholder={field.placeholder} />
                   ) : field.type === 'stringArray' ? (
                     <StringArrayInput value={item[field.key]} onChange={v => update(idx, field.key, v)} placeholder={field.placeholder} />
-                  ) : field.type === 'json' ? (
-                    <JsonInput value={item[field.key]} onChange={v => update(idx, field.key, v)} />
+                  ) : field.type === 'nestedArray' ? (
+                    <ArrayEditor
+                      items={item[field.key] || []}
+                      onChange={v => update(idx, field.key, v)}
+                      fields={field.subFields || []}
+                      newItem={field.subNewItem || {}}
+                    />
                   ) : (
                     <TextInput value={item[field.key]} onChange={v => update(idx, field.key, v)} placeholder={field.placeholder} />
                   )}
@@ -416,7 +390,16 @@ function CoursesEditor({ content, onChange }) {
             { key: 'features', label: 'Features List', type: 'stringArray', hint: 'one per line' },
             { key: 'outcomes', label: 'Learning Outcomes', type: 'stringArray', hint: 'one per line' },
             { key: 'whoIsItFor', label: 'Who Is It For', type: 'stringArray', hint: 'one per line' },
-            { key: 'curriculum', label: 'Curriculum (JSON)', type: 'json' },
+            {
+              key: 'curriculum', label: 'Curriculum Modules', type: 'nestedArray',
+              subFields: [
+                { key: 'title', label: 'Module Title', isTitle: true },
+                { key: 'lessons', label: 'Number of Lessons', type: 'number' },
+                { key: 'duration', label: 'Duration (e.g. 8 hours)' },
+                { key: 'topics', label: 'Topics', type: 'stringArray', hint: 'one per line' },
+              ],
+              subNewItem: { title: '', lessons: 0, duration: '', topics: [] },
+            },
           ]}
           newItem={{
             id: '',
@@ -544,8 +527,23 @@ function ImmigrationEditor({ content, onChange }) {
             { key: 'id', label: 'ID (canada/australia/uk/usa)' },
             { key: 'image', label: 'Cover Image URL' },
             { key: 'description', label: 'Description', type: 'textarea' },
-            { key: 'pathways', label: 'Immigration Pathways (JSON)', type: 'json' },
-            { key: 'stats', label: 'Stats (JSON)', type: 'json' },
+            {
+              key: 'pathways', label: 'Immigration Pathways', type: 'nestedArray',
+              subFields: [
+                { key: 'name', label: 'Pathway Name', isTitle: true },
+                { key: 'desc', label: 'Description', type: 'textarea' },
+                { key: 'duration', label: 'Processing Time (e.g. 6-12 months)' },
+              ],
+              subNewItem: { name: '', desc: '', duration: '' },
+            },
+            {
+              key: 'stats', label: 'Country Stats', type: 'nestedArray',
+              subFields: [
+                { key: 'value', label: 'Value (e.g. 450K+)', isTitle: true },
+                { key: 'label', label: 'Label' },
+              ],
+              subNewItem: { value: '', label: '' },
+            },
           ]}
           newItem={{ id: '', name: '', flag: '🌍', image: '', description: '', pathways: [], stats: [] }}
         />
@@ -629,7 +627,14 @@ function SuccessStoriesEditor({ content, onChange }) {
           onChange={v => set('scoreHighlights', v)}
           fields={[
             { key: 'title', label: 'Category Title (e.g. IELTS Achievers)', isTitle: true },
-            { key: 'scores', label: 'Scores Data (JSON)', type: 'json' },
+            {
+              key: 'scores', label: 'Score Entries', type: 'nestedArray',
+              subFields: [
+                { key: 'score', label: 'Score (e.g. 9 Band)', isTitle: true },
+                { key: 'count', label: 'Count (e.g. 50+)' },
+              ],
+              subNewItem: { score: '', count: '' },
+            },
           ]}
           newItem={{ title: '', scores: [] }}
         />
@@ -813,12 +818,18 @@ function GlobalEditor({ content, onChange }) {
             fields={[
               { key: 'label', label: 'Label', isTitle: true },
               { key: 'href', label: 'Href (page name)' },
-              { key: 'dropdown', label: 'Dropdown Items (JSON)', type: 'json', hint: 'leave empty or []' },
+              {
+                key: 'dropdown', label: 'Dropdown Items', type: 'nestedArray',
+                subFields: [
+                  { key: 'label', label: 'Menu Label', isTitle: true },
+                  { key: 'href', label: 'Href (e.g. Courses?category=ielts)' },
+                ],
+                subNewItem: { label: '', href: '' },
+              },
             ]}
             newItem={{ label: '', href: '', dropdown: [] }}
           />
         </Field>
-        <p className="text-xs text-slate-400 mt-1">Dropdown format: <code className="bg-slate-100 px-1 rounded">[{`{"label":"IELTS","href":"Courses?category=ielts"}`}]</code> — leave as <code className="bg-slate-100 px-1 rounded">[]</code> for no dropdown.</p>
       </SectionCard>
 
       <SectionCard title="Footer — Brand & Contact">
@@ -875,6 +886,341 @@ function GlobalEditor({ content, onChange }) {
   );
 }
 
+// ─── Custom pages builder ─────────────────────────────────────────────────────
+
+const SECTION_TYPES = [
+  { type: 'hero',  label: 'Hero Banner' },
+  { type: 'text',  label: 'Text Block' },
+  { type: 'cards', label: 'Cards Grid' },
+  { type: 'stats', label: 'Stats Row' },
+  { type: 'faq',   label: 'FAQ Accordion' },
+  { type: 'cta',   label: 'Call to Action' },
+];
+
+function defaultSection(type) {
+  const defaults = {
+    hero:  { badge: '', heading: '', headingHighlight: '', description: '', primaryBtn: 'Get Started', primaryBtnHref: '/bookconsultation' },
+    text:  { eyebrow: '', title: '', paragraphs: [] },
+    cards: { eyebrow: '', title: '', description: '', items: [] },
+    stats: { eyebrow: '', title: '', items: [] },
+    faq:   { eyebrow: '', title: '', items: [] },
+    cta:   { heading: '', headingHighlight: '', description: '', primaryBtn: '', primaryBtnHref: '/bookconsultation' },
+  };
+  return { id: Date.now().toString(), type, content: defaults[type] || {} };
+}
+
+function SectionContentEditor({ type, content, onChange }) {
+  const set = (key, val) => onChange({ ...content, [key]: val });
+
+  if (type === 'hero') return (
+    <div className="space-y-4">
+      <Field label="Badge Text"><TextInput value={content.badge} onChange={v => set('badge', v)} placeholder="e.g. MOIA Authorized" /></Field>
+      <Field label="Main Heading"><TextInput value={content.heading} onChange={v => set('heading', v)} placeholder="Your Gateway to a" /></Field>
+      <Field label="Heading Highlight" hint="shown in red"><TextInput value={content.headingHighlight} onChange={v => set('headingHighlight', v)} placeholder="Global Future" /></Field>
+      <Field label="Description"><TextArea value={content.description} onChange={v => set('description', v)} /></Field>
+      <Field label="Button Text"><TextInput value={content.primaryBtn} onChange={v => set('primaryBtn', v)} placeholder="Get Started" /></Field>
+      <Field label="Button Link"><TextInput value={content.primaryBtnHref} onChange={v => set('primaryBtnHref', v)} placeholder="/bookconsultation" /></Field>
+    </div>
+  );
+
+  if (type === 'text') return (
+    <div className="space-y-4">
+      <Field label="Eyebrow"><TextInput value={content.eyebrow} onChange={v => set('eyebrow', v)} /></Field>
+      <Field label="Title"><TextInput value={content.title} onChange={v => set('title', v)} /></Field>
+      <Field label="Paragraphs" hint="one paragraph per item">
+        <ArrayEditor
+          items={(content.paragraphs || []).map(p => ({ text: p }))}
+          onChange={v => onChange({ ...content, paragraphs: v.map(i => i.text) })}
+          fields={[{ key: 'text', label: 'Paragraph', type: 'textarea', rows: 4, isTitle: true }]}
+          newItem={{ text: '' }}
+        />
+      </Field>
+    </div>
+  );
+
+  if (type === 'cards') return (
+    <div className="space-y-4">
+      <Field label="Eyebrow"><TextInput value={content.eyebrow} onChange={v => set('eyebrow', v)} /></Field>
+      <Field label="Title"><TextInput value={content.title} onChange={v => set('title', v)} /></Field>
+      <Field label="Description"><TextArea value={content.description} onChange={v => set('description', v)} /></Field>
+      <Field label="Cards">
+        <ArrayEditor
+          items={content.items || []}
+          onChange={v => set('items', v)}
+          fields={[
+            { key: 'icon', label: 'Emoji Icon', isTitle: true },
+            { key: 'title', label: 'Card Title' },
+            { key: 'desc', label: 'Description', type: 'textarea' },
+          ]}
+          newItem={{ icon: '📌', title: '', desc: '' }}
+        />
+      </Field>
+    </div>
+  );
+
+  if (type === 'stats') return (
+    <div className="space-y-4">
+      <Field label="Eyebrow"><TextInput value={content.eyebrow} onChange={v => set('eyebrow', v)} /></Field>
+      <Field label="Title"><TextInput value={content.title} onChange={v => set('title', v)} /></Field>
+      <Field label="Stats">
+        <ArrayEditor
+          items={content.items || []}
+          onChange={v => set('items', v)}
+          fields={[
+            { key: 'value', label: 'Value (e.g. 98%)', isTitle: true },
+            { key: 'label', label: 'Label' },
+          ]}
+          newItem={{ value: '', label: '' }}
+        />
+      </Field>
+    </div>
+  );
+
+  if (type === 'faq') return (
+    <div className="space-y-4">
+      <Field label="Eyebrow"><TextInput value={content.eyebrow} onChange={v => set('eyebrow', v)} /></Field>
+      <Field label="Title"><TextInput value={content.title} onChange={v => set('title', v)} /></Field>
+      <Field label="Questions">
+        <ArrayEditor
+          items={content.items || []}
+          onChange={v => set('items', v)}
+          fields={[
+            { key: 'q', label: 'Question', isTitle: true },
+            { key: 'a', label: 'Answer', type: 'textarea', rows: 3 },
+          ]}
+          newItem={{ q: '', a: '' }}
+        />
+      </Field>
+    </div>
+  );
+
+  if (type === 'cta') return (
+    <div className="space-y-4">
+      <Field label="Heading"><TextInput value={content.heading} onChange={v => set('heading', v)} /></Field>
+      <Field label="Heading Highlight" hint="shown lighter on red background"><TextInput value={content.headingHighlight} onChange={v => set('headingHighlight', v)} /></Field>
+      <Field label="Description"><TextArea value={content.description} onChange={v => set('description', v)} /></Field>
+      <Field label="Button Text"><TextInput value={content.primaryBtn} onChange={v => set('primaryBtn', v)} /></Field>
+      <Field label="Button Link"><TextInput value={content.primaryBtnHref} onChange={v => set('primaryBtnHref', v)} placeholder="/bookconsultation" /></Field>
+    </div>
+  );
+
+  return <p className="text-slate-400 text-sm">Unknown section type.</p>;
+}
+
+function PagesEditor({ content, onChange }) {
+  const pages = content.pages || [];
+  const [editingPageIdx, setEditingPageIdx] = useState(null);
+  const [openSectionIdx, setOpenSectionIdx] = useState(null);
+  const [showAddSection, setShowAddSection] = useState(false);
+
+  const updatePages = (newPages) => onChange({ ...content, pages: newPages });
+
+  const createPage = () => {
+    const ts = Date.now().toString();
+    const newPage = { id: ts, title: 'New Page', slug: 'new-page', metaTitle: '', metaDescription: '', sections: [] };
+    const next = [...pages, newPage];
+    updatePages(next);
+    setEditingPageIdx(next.length - 1);
+    setOpenSectionIdx(null);
+    setShowAddSection(false);
+  };
+
+  const deletePage = (idx) => {
+    updatePages(pages.filter((_, i) => i !== idx));
+    if (editingPageIdx === idx) setEditingPageIdx(null);
+  };
+
+  const updatePage = (idx, updates) =>
+    updatePages(pages.map((p, i) => i === idx ? { ...p, ...updates } : p));
+
+  const addSection = (pageIdx, type) => {
+    const sections = [...(pages[pageIdx].sections || []), defaultSection(type)];
+    updatePage(pageIdx, { sections });
+    setOpenSectionIdx(sections.length - 1);
+    setShowAddSection(false);
+  };
+
+  const updateSection = (pageIdx, sIdx, content) => {
+    const sections = pages[pageIdx].sections.map((s, i) => i === sIdx ? { ...s, content } : s);
+    updatePage(pageIdx, { sections });
+  };
+
+  const deleteSection = (pageIdx, sIdx) => {
+    const sections = pages[pageIdx].sections.filter((_, i) => i !== sIdx);
+    updatePage(pageIdx, { sections });
+    if (openSectionIdx === sIdx) setOpenSectionIdx(null);
+  };
+
+  const moveSectionUp = (pageIdx, sIdx) => {
+    if (sIdx === 0) return;
+    const sections = [...pages[pageIdx].sections];
+    [sections[sIdx - 1], sections[sIdx]] = [sections[sIdx], sections[sIdx - 1]];
+    updatePage(pageIdx, { sections });
+    setOpenSectionIdx(sIdx - 1);
+  };
+
+  const moveSectionDown = (pageIdx, sIdx) => {
+    const page = pages[pageIdx];
+    if (sIdx === page.sections.length - 1) return;
+    const sections = [...page.sections];
+    [sections[sIdx], sections[sIdx + 1]] = [sections[sIdx + 1], sections[sIdx]];
+    updatePage(pageIdx, { sections });
+    setOpenSectionIdx(sIdx + 1);
+  };
+
+  // ── Page list ──────────────────────────────────────────────────────────────
+  if (editingPageIdx === null) {
+    return (
+      <div>
+        <div className="flex items-start justify-between mb-6">
+          <div>
+            <h2 className="text-base font-semibold text-slate-800">Custom Pages</h2>
+            <p className="text-xs text-slate-500 mt-0.5">Pages you create here are live at <code className="bg-slate-100 px-1 rounded">yourdomain.com/slug</code>.</p>
+          </div>
+          <button onClick={createPage} className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-lg transition-colors flex-shrink-0">
+            + New Page
+          </button>
+        </div>
+
+        {pages.length === 0 ? (
+          <div className="border-2 border-dashed border-slate-200 rounded-2xl p-14 text-center">
+            <p className="text-slate-400 text-sm">No custom pages yet.</p>
+            <button onClick={createPage} className="mt-3 text-red-600 text-sm font-medium hover:text-red-700">Create your first page →</button>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {pages.map((page, idx) => (
+              <div key={page.id} className="border border-slate-200 rounded-xl p-4 flex items-center justify-between bg-white hover:border-slate-300 transition-colors">
+                <div>
+                  <p className="font-medium text-slate-800">{page.title}</p>
+                  <p className="text-xs text-slate-400 mt-0.5">/{page.slug} · {(page.sections || []).length} section{(page.sections || []).length !== 1 ? 's' : ''}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => { setEditingPageIdx(idx); setOpenSectionIdx(null); setShowAddSection(false); }}
+                    className="px-3 py-1.5 text-sm font-medium border border-slate-300 text-slate-600 rounded-lg hover:bg-slate-50 transition-colors"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => { if (typeof window !== 'undefined' && window.confirm(`Delete "${page.title}"?`)) deletePage(idx); }}
+                    className="px-3 py-1.5 text-sm font-medium text-red-400 hover:text-red-600 transition-colors"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  // ── Page editor ────────────────────────────────────────────────────────────
+  const page = pages[editingPageIdx];
+  const sections = page.sections || [];
+
+  return (
+    <div>
+      <button
+        onClick={() => { setEditingPageIdx(null); setOpenSectionIdx(null); setShowAddSection(false); }}
+        className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800 mb-6 transition-colors"
+      >
+        ← All Pages
+      </button>
+
+      <SectionCard title="Page Settings">
+        <Field label="Page Title">
+          <TextInput value={page.title} onChange={v => updatePage(editingPageIdx, { title: v })} placeholder="e.g. Visa Requirements" />
+        </Field>
+        <Field label="URL Slug" hint="yoursite.com/this-part">
+          <TextInput
+            value={page.slug}
+            onChange={v => updatePage(editingPageIdx, { slug: v.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') })}
+            placeholder="visa-requirements"
+          />
+        </Field>
+        <Field label="Meta Title" hint="browser tab / SEO">
+          <TextInput value={page.metaTitle} onChange={v => updatePage(editingPageIdx, { metaTitle: v })} placeholder="Visa Requirements — Grey Matters" />
+        </Field>
+        <Field label="Meta Description" hint="shown in Google results">
+          <TextArea value={page.metaDescription} onChange={v => updatePage(editingPageIdx, { metaDescription: v })} rows={2} placeholder="Short description for search engines..." />
+        </Field>
+      </SectionCard>
+
+      <div className="border border-slate-200 rounded-2xl overflow-hidden mb-6">
+        <div className="px-6 py-4 bg-slate-50">
+          <span className="font-semibold text-slate-800 text-sm">Sections ({sections.length})</span>
+        </div>
+        <div className="p-6 bg-white space-y-3">
+          {sections.length === 0 && !showAddSection && (
+            <p className="text-slate-400 text-sm text-center py-6">No sections yet. Add a section below to start building.</p>
+          )}
+
+          {sections.map((section, sIdx) => {
+            const typeLabel = SECTION_TYPES.find(t => t.type === section.type)?.label || section.type;
+            const previewText = section.content?.heading || section.content?.title || section.content?.badge || 'Untitled';
+            return (
+              <div key={section.id} className="border border-slate-200 rounded-xl overflow-hidden">
+                <div
+                  className="flex items-center justify-between px-4 py-3 bg-slate-50 cursor-pointer hover:bg-slate-100 transition-colors"
+                  onClick={() => setOpenSectionIdx(openSectionIdx === sIdx ? null : sIdx)}
+                >
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-xs font-semibold text-white bg-slate-500 px-2 py-0.5 rounded flex-shrink-0">{typeLabel}</span>
+                    <span className="text-sm font-medium text-slate-700 truncate">{previewText}</span>
+                  </div>
+                  <div className="flex items-center gap-1 ml-2 flex-shrink-0">
+                    <button onClick={e => { e.stopPropagation(); moveSectionUp(editingPageIdx, sIdx); }} disabled={sIdx === 0} className="p-1 text-slate-400 hover:text-slate-600 disabled:opacity-30" title="Move up">↑</button>
+                    <button onClick={e => { e.stopPropagation(); moveSectionDown(editingPageIdx, sIdx); }} disabled={sIdx === sections.length - 1} className="p-1 text-slate-400 hover:text-slate-600 disabled:opacity-30" title="Move down">↓</button>
+                    <button onClick={e => { e.stopPropagation(); deleteSection(editingPageIdx, sIdx); }} className="p-1 text-red-400 hover:text-red-600" title="Delete">✕</button>
+                    <span className="text-slate-400 ml-1 text-xs">{openSectionIdx === sIdx ? '▲' : '▼'}</span>
+                  </div>
+                </div>
+                {openSectionIdx === sIdx && (
+                  <div className="p-4 bg-white border-t border-slate-100">
+                    <SectionContentEditor
+                      type={section.type}
+                      content={section.content || {}}
+                      onChange={newContent => updateSection(editingPageIdx, sIdx, newContent)}
+                    />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {showAddSection ? (
+            <div className="border-2 border-dashed border-slate-200 rounded-xl p-5">
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3">Choose a section type</p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {SECTION_TYPES.map(({ type, label }) => (
+                  <button
+                    key={type}
+                    onClick={() => addSection(editingPageIdx, type)}
+                    className="px-3 py-3 text-sm font-medium border border-slate-200 text-slate-700 rounded-xl hover:border-red-400 hover:text-red-600 hover:bg-red-50 transition-colors text-left"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+              <button onClick={() => setShowAddSection(false)} className="mt-3 text-xs text-slate-400 hover:text-slate-600 transition-colors">Cancel</button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowAddSection(true)}
+              className="w-full py-2.5 border-2 border-dashed border-slate-300 text-slate-500 text-sm font-medium rounded-xl hover:border-red-400 hover:text-red-500 transition-colors"
+            >
+              + Add Section
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Page map ────────────────────────────────────────────────────────────────
 
 const PAGES = [
@@ -887,6 +1233,7 @@ const PAGES = [
   { id: 'howitworks', label: 'How It Works' },
   { id: 'contact', label: 'Contact' },
   { id: 'global', label: 'Global (Footer & CTA)' },
+  { id: 'custompages', label: '+ Pages', dividerBefore: true },
 ];
 
 const EDITORS = {
@@ -899,6 +1246,7 @@ const EDITORS = {
   howitworks: HowItWorksEditor,
   contact: ContactEditor,
   global: GlobalEditor,
+  custompages: PagesEditor,
 };
 
 // ─── Main admin dashboard ────────────────────────────────────────────────────
@@ -1038,17 +1386,19 @@ export default function AdminDashboard() {
               <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Pages</p>
               <nav className="space-y-1">
                 {PAGES.map(page => (
-                  <button
-                    key={page.id}
-                    onClick={() => { setActivePage(page.id); setSidebarOpen(false); }}
-                    className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
-                      activePage === page.id
-                        ? 'bg-red-50 text-red-600 font-semibold'
-                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                    }`}
-                  >
-                    {page.label}
-                  </button>
+                  <div key={page.id}>
+                    {page.dividerBefore && <hr className="my-2 border-slate-200" />}
+                    <button
+                      onClick={() => { setActivePage(page.id); setSidebarOpen(false); }}
+                      className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                        activePage === page.id
+                          ? 'bg-red-50 text-red-600 font-semibold'
+                          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                      }`}
+                    >
+                      {page.label}
+                    </button>
+                  </div>
                 ))}
               </nav>
             </div>
@@ -1060,9 +1410,11 @@ export default function AdminDashboard() {
             <div className="sticky top-0 z-10 bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between shadow-sm">
               <div>
                 <h1 className="font-bold text-slate-900">
-                  {PAGES.find(p => p.id === activePage)?.label} Content
+                  {activePage === 'custompages' ? 'Pages' : `${PAGES.find(p => p.id === activePage)?.label} Content`}
                 </h1>
-                <p className="text-xs text-slate-500 mt-0.5">Edit and save changes to update the live site</p>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {activePage === 'custompages' ? 'Create and manage custom pages on the site' : 'Edit and save changes to update the live site'}
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 {saveStatus === 'saved' && (

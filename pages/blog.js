@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Clock, ArrowRight, Search } from 'lucide-react';
 import SectionHeading from '@/Components/common/SectionHeading';
 import CTASection from '@/Components/home/CTASection';
-import { Tabs, TabsList, TabsTrigger } from '@/Components/ui/tabs';
 import { Input } from '@/Components/ui/input';
 import { getContent } from '@/lib/content';
 
@@ -106,17 +105,25 @@ export default function Blog({ content }) {
       <section className="py-8 bg-slate-50 border-y sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-4">
-            <div className="relative flex-1 max-w-md">
+            <div className="relative w-full md:flex-1 md:max-w-md">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <Input placeholder="Search articles..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="pl-10" />
             </div>
-            <Tabs value={activeCategory} onValueChange={setActiveCategory}>
-              <TabsList className="bg-white p-1 rounded-full border">
-                {CATEGORIES.map(cat => (
-                  <TabsTrigger key={cat.id} value={cat.id} className="rounded-full px-4 text-sm">{cat.label}</TabsTrigger>
-                ))}
-              </TabsList>
-            </Tabs>
+            <div className="flex flex-wrap gap-2 w-full md:w-auto">
+              {CATEGORIES.map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${
+                    activeCategory === cat.id
+                      ? 'bg-slate-900 text-white'
+                      : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
